@@ -4,7 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "bb7d2cb14a4ab52ae45186cea60049a2",
+=======
+    "content-hash": "eff5f68433b37ec77304930eff4f2eb0",
+>>>>>>> 5085d49cec57cd351d827a34c2d9954d3da0422c
     "packages": [
         {
             "name": "arrilot/laravel-widgets",
@@ -1733,6 +1737,7 @@
             "time": "2021-04-26T09:17:50+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "intervention/image",
             "version": "2.5.1",
             "source": {
@@ -1771,12 +1776,52 @@
                     ],
                     "aliases": {
                         "Image": "Intervention\\Image\\Facades\\Image"
+=======
+            "name": "hardevine/shoppingcart",
+            "version": "3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hardevine/LaravelShoppingcart.git",
+                "reference": "8dea942f3c61ed450fe7dfee968dc9943fa649f8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hardevine/LaravelShoppingcart/zipball/8dea942f3c61ed450fe7dfee968dc9943fa649f8",
+                "reference": "8dea942f3c61ed450fe7dfee968dc9943fa649f8",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/events": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*|5.8.*|^6|^7|^8",
+                "illuminate/session": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*|5.8.*|^6|^7|^8",
+                "illuminate/support": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*|5.8.*|^6|^7|^8"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9.0",
+                "orchestra/testbench": "~3.1",
+                "phpunit/phpunit": "~5.0 || ~6.0 || ~7.0"
+            },
+            "suggest": {
+                "gloudemans/notify": "Simple flash notifications for Laravel"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Gloudemans\\Shoppingcart\\ShoppingcartServiceProvider"
+                    ],
+                    "aliases": {
+                        "Cart": "Gloudemans\\Shoppingcart\\Facades\\Cart"
+>>>>>>> 5085d49cec57cd351d827a34c2d9954d3da0422c
                     }
                 }
             },
             "autoload": {
                 "psr-4": {
+<<<<<<< HEAD
                     "Intervention\\Image\\": "src/Intervention/Image"
+=======
+                    "Gloudemans\\Shoppingcart\\": "src/"
+>>>>>>> 5085d49cec57cd351d827a34c2d9954d3da0422c
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1785,6 +1830,7 @@
             ],
             "authors": [
                 {
+<<<<<<< HEAD
                     "name": "Oliver Vogel",
                     "email": "oliver@olivervogel.com",
                     "homepage": "http://olivervogel.com/"
@@ -2036,6 +2082,22 @@
                 "source": "https://github.com/larapack/voyager-hooks"
             },
             "time": "2020-03-04T21:35:18+00:00"
+=======
+                    "name": "Rob Gloudemans",
+                    "email": "info@robgloudemans.nl"
+                }
+            ],
+            "description": "Laravel Shoppingcart",
+            "keywords": [
+                "laravel",
+                "shoppingcart"
+            ],
+            "support": {
+                "issues": "https://github.com/hardevine/LaravelShoppingcart/issues",
+                "source": "https://github.com/hardevine/LaravelShoppingcart/tree/3.0"
+            },
+            "time": "2021-05-26T08:26:01+00:00"
+>>>>>>> 5085d49cec57cd351d827a34c2d9954d3da0422c
         },
         {
             "name": "laravel/framework",
