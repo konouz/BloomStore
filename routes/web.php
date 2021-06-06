@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Product;
+// use Database\Seeders\VoyagerDatabaseSeeder;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,11 +16,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $product=Product::all();
+    return view('welcome',['products'=>$product]);
 });
+Route::resource('products', ProductController::class);
+Route::resource('categories', CategoryController::class);
+Route::resource('brands', BrandController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
 require __DIR__.'/auth.php';
