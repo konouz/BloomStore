@@ -23,9 +23,9 @@ Route::resource('products', ProductController::class);
 Route::resource('categories', CategoryController::class);
 Route::resource('brands', BrandController::class);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
 
 
 
