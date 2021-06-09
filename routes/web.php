@@ -1,14 +1,10 @@
 <?php
-<<<<<<< HEAD
 use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\ShopComponent;
 use App\Http\Livewire\CartComponent;
 use App\Http\Livewire\checkoutComponent;
 use App\Models\Product;
 // use Database\Seeders\VoyagerDatabaseSeeder;
-=======
-
->>>>>>> parent of cd44a06 (add controllers ,model ,)
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,7 +18,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-<<<<<<< HEAD
 // Route::get('/', function () {
 //     $product=Product::all();
 //     return view('welcome',['products'=>$product]);
@@ -30,20 +25,12 @@ use Illuminate\Support\Facades\Route;
 Route::resource('products', ProductController::class);
 Route::resource('categories', CategoryController::class);
 Route::resource('brands', BrandController::class);
-=======
-Route::get('/', function () {
-    return view('welcome');
-});
->>>>>>> parent of cd44a06 (add controllers ,model ,)
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-<<<<<<< HEAD
 
-=======
->>>>>>> parent of cd44a06 (add controllers ,model ,)
 require __DIR__.'/auth.php';
 
 
