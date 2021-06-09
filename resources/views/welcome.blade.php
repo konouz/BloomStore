@@ -155,7 +155,7 @@
 <nav class="navbar navbar-dark navbar-expand p-0 bg-primary">
 <div class="container">
     <ul class="navbar-nav d-none d-md-flex mr-auto">
-    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+    <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
     <li class="nav-item"><a class="nav-link" href="#">Delivery</a></li>
     <li class="nav-item"><a class="nav-link" href="#">Payment</a></li>
     </ul>
@@ -224,7 +224,7 @@
           <a class="nav-link pl-0" data-toggle="dropdown" href="#"><strong> <i class="fa fa-bars"></i>    All category</strong></a>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="#">Foods and Drink</a>
-            <a class="dropdown-item" href="#">Home interior</a>
+            <a class="dropdown-item" href="#">Dashboard interior</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Category 1</a>
             <a class="dropdown-item" href="#">Category 2</a>
