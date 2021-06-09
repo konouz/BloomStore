@@ -1,12 +1,13 @@
 <?php
 
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\ShopComponent;
 use App\Http\Livewire\CartComponent;
 use App\Http\Livewire\checkoutComponent;
 use App\Models\Product;
-// use Database\Seeders\VoyagerDatabaseSeeder;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,8 +20,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/products/list', [ProductController::class,'list'])->name('products.list');
 Route::resource('products', ProductController::class);
+
 Route::resource('categories', CategoryController::class);
 Route::resource('brands', BrandController::class);
 

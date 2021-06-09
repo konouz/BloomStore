@@ -18,6 +18,12 @@ class ProductController extends Controller
 
         return view('livewire.shop-component', ['products' => $product]);
     }
+    public function list()
+    {
+        $product = Product::all();
+
+        return view('admin.product.list', ['product' => $product]);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -27,9 +33,8 @@ class ProductController extends Controller
     public function create()
     {
 
-        $product = Product::all();
+        return view('admin.product.create');
 
-        // return view('post.create', ['categories' => $categories, 'tags' => $tags]);
     }
 
     /**
@@ -40,7 +45,17 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'              => 'required|min:4|max:255',
+            'price'             => 'required|integer',
+            'product_image'     => 'required|url',
+            'description'       => 'required|min:20|max:255'
+        ]);
+
+        $product = Product::create($request->all());
+
+        return redirect()->route('products.index');
+        // ->with('success', 'The Tag was created successfully');
     }
 
     /**
@@ -51,7 +66,8 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        // return view('admin.product.list',['product' => $product]);
+
     }
 
     /**
@@ -62,7 +78,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('admin.product.edit',['product' => $product]);
+
     }
 
     /**
@@ -74,7 +91,16 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $request->validate([
+            'name'              => 'required|min:4|max:255',
+            'price'             => 'required|integer',
+            'product_image'     => 'required|url',
+            'description'       => 'required|min:20|max:255'
+        ]);
+
+        $product->update($request->all());
+
+        return redirect()->route('products.list');
     }
 
     /**
@@ -85,6 +111,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return redirect()->route('products.show');
+
     }
 }
