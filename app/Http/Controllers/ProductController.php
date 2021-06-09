@@ -14,7 +14,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $product = Product::all();
+
+        return view('livewire.shop-component', ['products' => $product]);
     }
 
     /**
@@ -24,7 +26,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+
+        $product = Product::all();
+
+        // return view('post.create', ['categories' => $categories, 'tags' => $tags]);
     }
 
     /**
