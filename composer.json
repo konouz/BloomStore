@@ -10,13 +10,9 @@
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.40",
-<<<<<<< HEAD
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.4",
         "tcg/voyager": "^1.4"
-=======
-        "laravel/tinker": "^2.5"
->>>>>>> parent of cd44a06 (add controllers ,model ,)
     },
     "require-dev": {
         "facade/ignition": "^2.5",
@@ -62,7 +58,6 @@
         "sort-packages": true
     },
     "minimum-stability": "dev",
-<<<<<<< HEAD
     "prefer-stable": true,
     "repositories": {
         "hooks": {
@@ -70,11 +65,4 @@
             "url": "https://larapack.io"
         }
     }
-<<<<<<< HEAD
-=======
-    "prefer-stable": true
->>>>>>> parent of cd44a06 (add controllers ,model ,)
 }
-=======
-}
->>>>>>> parent of 1ea8583 (Merge branches 'main' and 'main' of https://github.com/konouz/BloomStore)
