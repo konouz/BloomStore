@@ -20,10 +20,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     $product=Product::all();
-//     return view('welcome',['products'=>$product]);
-// });
 Route::resource('products', ProductController::class);
 Route::resource('categories', CategoryController::class);
 Route::resource('brands', BrandController::class);
