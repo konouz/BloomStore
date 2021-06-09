@@ -70,7 +70,11 @@
             "url": "https://larapack.io"
         }
     }
+<<<<<<< HEAD
 =======
     "prefer-stable": true
 >>>>>>> parent of cd44a06 (add controllers ,model ,)
 }
+=======
+}
+>>>>>>> parent of 1ea8583 (Merge branches 'main' and 'main' of https://github.com/konouz/BloomStore)
