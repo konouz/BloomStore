@@ -26,21 +26,16 @@ Route::resource('products', ProductController::class);
 Route::resource('categories', CategoryController::class);
 Route::resource('brands', BrandController::class);
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
 
-
-Route::group(['prefix' => 'admin'], function () {
-    Voyager::routes();
-});
 require __DIR__.'/auth.php';
 
 
 Route::get('/', HomeComponent::class );
 
-Route::get('/shop', ShopComponent::class );
 
 Route::get('/cart', CartComponent::class );
 
