@@ -1,10 +1,14 @@
 <?php
+<<<<<<< HEAD
 use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\ShopComponent;
 use App\Http\Livewire\CartComponent;
 use App\Http\Livewire\checkoutComponent;
 use App\Models\Product;
 // use Database\Seeders\VoyagerDatabaseSeeder;
+=======
+
+>>>>>>> parent of cd44a06 (add controllers ,model ,)
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+<<<<<<< HEAD
 // Route::get('/', function () {
 //     $product=Product::all();
 //     return view('welcome',['products'=>$product]);
@@ -25,22 +30,28 @@ use Illuminate\Support\Facades\Route;
 Route::resource('products', ProductController::class);
 Route::resource('categories', CategoryController::class);
 Route::resource('brands', BrandController::class);
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth'])->name('dashboard');
-
-
-
-Route::group(['prefix' => 'admin'], function () {
-    Voyager::routes();
+=======
+Route::get('/', function () {
+    return view('welcome');
 });
+>>>>>>> parent of cd44a06 (add controllers ,model ,)
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+=======
+>>>>>>> parent of cd44a06 (add controllers ,model ,)
+>>>>>>> b6481543c9f8eda1976295d70fd8edc22993f236
 require __DIR__.'/auth.php';
 
 
 Route::get('/', HomeComponent::class );
 
-Route::get('/shop', ShopComponent::class );
 
 Route::get('/cart', CartComponent::class );
 
