@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Helen | Dashboard 3</title>
+    <title>BloomStore| Dashboard </title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.1.0/css/adminlte.min.css" integrity="sha512-mxrUXSjrxl8vm5GwafxcqTrEwO1/oBNU25l20GODsysHReZo4uhVISzAKzaABH6/tTfAxZrY2FprmeAP5UZY8A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -42,10 +42,10 @@
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                    <img src="img/User_icon_2.svg.png" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">Alexander Pierce</a>
+                    <a href="#" class="d-block">BloomStore</a>
                 </div>
             </div>
 
@@ -67,12 +67,12 @@
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                     data-accordion="false">
                     <li class="nav-item">
-                        {{-- <a href="{{ route('admin.index') }}" class="nav-link active"> --}}
+                        <a href="#" class="nav-link active">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
                                 Dashboard
                             </p>
-                        {{-- </a> --}}
+                        </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
@@ -84,16 +84,16 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                {{-- <a href="{{ route('admin.user.add') }}" class="nav-link"> --}}
+                                <a href="#" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Add New User</p>
-                                {{-- </a> --}}
+                                </a>
                             </li>
                             <li class="nav-item">
-                                {{-- <a href="{{ route('admin.user.list') }}" class="nav-link"> --}}
+                                <a href="#" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Edit Users</p>
-                                {{-- </a> --}}
+                                </a>
                             </li>
                         </ul>
                     </li>
@@ -107,16 +107,16 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                {{-- <a href="{{ route('admin.categories.add') }}" class="nav-link"> --}}
+                                <a href="#" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Add New Category</p>
-                                {{-- </a> --}}
+                                </a>
                             </li>
                             <li class="nav-item">
-                                {{-- <a href="{{ route('admin.categories.list') }}" class="nav-link"> --}}
+                                <a href="#" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Edit Categories</p>
-                                {{-- </a> --}}
+                                </a>
                             </li>
                         </ul>
                     </li>
@@ -124,32 +124,55 @@
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-user"></i>
                             <p>
-                                Questions & Answers
+                                Products
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                {{-- <a href="{{ route('admin.questions.list') }}" class="nav-link"> --}}
+                                <a href="#" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Questions</p>
-                                {{-- </a> --}}
+                                    <p>Add New Product</p>
+                                </a>
                             </li>
                             <li class="nav-item">
-                                {{-- <a href="{{ route('admin.answers.list') }}" class="nav-link"> --}}
+                                <a href="#" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Answers</p>
-                                {{-- </a> --}}
+                                    <p>Edit Product</p>
+                                </a>
                             </li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        {{-- <a href="{{ route('admin.index') }}" class="nav-link"> --}}
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-user"></i>
+                            <p>
+                                Brands
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Add New Brand</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Edit Brand</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-sign-out-alt"></i>
                             <p>
                                 Log out
                             </p>
-                        {{-- </a> --}}
+                        </a>
                     </li>
                 </ul>
             </nav>
@@ -199,6 +222,10 @@
 <!-- REQUIRED SCRIPTS -->
 
 <script src="{{ asset('js/app.js') }}"></script>
+<script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.bootstrap.js"></script>
