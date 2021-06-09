@@ -14,7 +14,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $product= Product :: OrderBy('created_at','desc')->get();
+
+        return view('pro', compact('product'));
     }
 
     /**
@@ -44,9 +46,9 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show()
+
     {
-        //
     }
 
     /**
@@ -82,4 +84,21 @@ class ProductController extends Controller
     {
         //
     }
-}
+    public function serarch( Request $request )
+    {
+        $request->validate([
+                'search' => 'required'
+
+                ]);
+                $search=$request->search;
+
+                $filterproduct= Product::where('name','like','% '.$search .'%')->get();
+
+
+                if($filterproduct->count){
+                    return view('pro')->with([
+                        'product' =>  $filterproduct
+                    ]);       }
+                        else redirect('/product')->with(['status','notfound']);
+        }
+        }

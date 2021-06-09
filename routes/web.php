@@ -4,6 +4,7 @@ use App\Http\Livewire\ShopComponent;
 use App\Http\Livewire\CartComponent;
 use App\Http\Livewire\checkoutComponent;
 use App\Models\Product;
+use App\Http\Controllers\ProductController;
 // use Database\Seeders\VoyagerDatabaseSeeder;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +24,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome',['products'=>$product]);
 // });
 Route::resource('products', ProductController::class);
+
 Route::resource('categories', CategoryController::class);
 Route::resource('brands', BrandController::class);
 
