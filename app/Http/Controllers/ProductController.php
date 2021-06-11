@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -15,32 +16,38 @@ class ProductController extends Controller
     public function index(Request $request)
     {
 
-
-        if ($request->search) {
-            $q = $request->search;
-
-            $products = Product::where('name', 'like', '%' . $q . '%')->get();
-
-            if ($products->count()) {
-
-                return view('livewire.shop-component', [
-                    'products' =>  $products
-                ]);
-            } else {
-
-                return view('livewire.shop-component', ['products' => []])->with([
-                    'status' => 'search failed ,, please try again'
-                ]);
-            }
-        } else {
-            $products = Product::OrderBy('created_at', 'desc')->get();
-        }
+        $product = Product::all();
+        $categories = Category::with('children')->whereNull('parent_id')->get()  ;
+        return view('livewire.shop-component', ['products' => $product, 'categories'  => $categories]);
 
 
-        return view('livewire.shop-component', ['products' => $products]);
+
+//         if ($request->search) {
+//             $q = $request->search;
+
+//             $products = Product::where('name', 'like', '%' . $q . '%')->get();
+
+//             if ($products->count()) {
+
+//                 return view('livewire.shop-component', [
+//                     'products' =>  $products
+//                 ]);
+//             } else {
+
+//                 return view('livewire.shop-component', ['products' => []])->with([
+//                     'status' => 'search failed ,, please try again'
+//                 ]);
+//             }
+//         } else {
+//             $products = Product::OrderBy('created_at', 'desc')->get();
+//         }
+
+
+//         return view('livewire.shop-component', ['products' => $products]);
 
 
         // return view('livewire.shop-component', ['products' => $product]);
+
     }
 
         //$product = Product::all();
