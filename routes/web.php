@@ -37,3 +37,4 @@ Route::get('/cart', CartComponent::class );
 
 Route::get('/checkout', CheckoutComponent::class );
 
+require __DIR__.'/auth.php';
