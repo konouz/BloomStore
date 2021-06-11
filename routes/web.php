@@ -39,9 +39,7 @@ Route::resource('brands', BrandController::class);
  })->middleware(['auth'])->name('dashboard');
 
 //Route::get('products/search', [ProductController::class,'search'])->name('products.search');
-Route::resource('products', ProductController::class);
-
-
+// Route::resource('products', ProductController::class);
 Route::resource('categories', CategoryController::class);
 Route::resource('brands', BrandController::class);
 
@@ -50,11 +48,9 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('/', HomeComponent::class );
-
-
 Route::get('/cart', CartComponent::class )->name('product.cart');
-
 Route::get('/checkout', CheckoutComponent::class );
-
+Route::get('/shop', ShopComponent::class );
 Route::get('/product/(slug)', DetailsComponent::class)->name('product.details');
+
 require __DIR__.'/auth.php';
