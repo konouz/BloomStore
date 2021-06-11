@@ -15,6 +15,7 @@ class ProductController extends Controller
     public function index(Request $request)
     {
 
+
         if ($request->search) {
             $q = $request->search;
 
@@ -42,13 +43,9 @@ class ProductController extends Controller
         // return view('livewire.shop-component', ['products' => $product]);
     }
 
+        //$product = Product::all();
 
-
-
-
-
-
-    //
+       // return view('livewire.shop-component', ['products' => $product]);
 
     public function list()
     {
@@ -135,8 +132,11 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('admin.product.edit', ['product' => $product]);
+        return view('admin.product.edit',['product' => $product]);
+
     }
+
+
 
     /**
      * Update the specified resource in storage.
@@ -173,5 +173,9 @@ class ProductController extends Controller
     {
         $product->delete();
         return redirect()->route('products.show');
+
+
+
+
     }
 }

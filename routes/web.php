@@ -10,6 +10,7 @@ use App\Http\Livewire\CartComponent;
 use App\Http\Livewire\checkoutComponent;
 use App\Models\Product;
 
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/products/list', [ProductController::class,'list'])->name('products.list');
+
 
 //Route::get('products/search', [ProductController::class,'search'])->name('products.search');
 Route::resource('products', ProductController::class);
