@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -14,7 +15,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $product = Product::all();
+        $category = Category::all();
+        return view('livewire.shop-component',['products'=>$product,'categories'=>$category]);
     }
 
     /**
@@ -24,7 +27,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.category.create');
     }
 
     /**
@@ -35,7 +38,18 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        $request->validate([
+        'name'=> 'required|min:4|max:255',
+        'icon'=> 'required|url',
+        'parent_id' => 'sometimes|nullable|numeric'
+        ]);
+        $category = new Category();
+        $category->name = $request->name;
+        $category->icon= $request->icon;
+        $category->parent_id = $request->parent_id;
+        $category->save();
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -46,7 +60,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        return view('category.show', ['category' => $category]);
     }
 
     /**
@@ -57,7 +71,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('admin.category.edit',  ['category' => $category]);
     }
 
     /**
@@ -69,7 +83,13 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $request->validate([
+            'name'  => 'required|min:4|max:255',
+             'icon'  => 'required|url',
+             'parent_id' => 'sometimes|nullable|numeric'
+        ]);
+        $category->update($request->all());
+        return redirect()->route('categories.show', $category);
     }
 
     /**
@@ -80,6 +100,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return redirect()->route('categories.index');
     }
 }
