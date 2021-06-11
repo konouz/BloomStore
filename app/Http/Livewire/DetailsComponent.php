@@ -24,11 +24,11 @@ class DetailsComponent extends Component
         $product= Product::where('slug',$this->slug)->first();
         return view('livewire.details-component',['product'->$product])->layout('layouts.base');
     }
-        // public function store ($product_id,$product_name,$product_price)
-    // {
+        public function store ($product_id,$product_name,$product_price)
+    {
 
-    //     Cart::add($product_id,$product_name,$product_price)->associate('app\Models\Product');
-    //     session()->flash('success massage','Item added in Cart');
-    //     return redirect()->route('product.cart');
-    // }
+        Cart::add($product_id,$product_name,$product_price)->associate('app\Models\Product');
+        session()->flash('success massage','Item added in Cart');
+        return redirect()->route('product.cart');
+    }
 }

@@ -11,13 +11,13 @@ use Cart;
 class ShopComponent extends Component
 {
 
-    // public function store ($product_id,$product_name,$product_price)
-    // {
+    public function store ($product_id,$product_name,$product_price)
+    {
 
-    //     Cart::add($product_id,$product_name,$product_price)->associate('app\Models\Product');
-    //     session()->flash('success massage','Item added in Cart');
-    //     return redirect()->route('product.cart');
-    // }
+        Cart::add($product_id,$product_name,$product_price)->associate('app\Models\Product');
+        session()->flash('success massage','Item added in Cart');
+        return redirect()->route('product.cart');
+    }
 
     use withPagination;
     public function render()
