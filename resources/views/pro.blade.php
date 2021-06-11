@@ -10,9 +10,8 @@
 <div class="row">
 
             <div class="col-md-6 offset-md-2">
-                <form action="/products" method="POST">
-                    @csrf
-                    <input type="text" name="searsh" id="searsh" class="form-control">
+                <form action="/products">
+                    <input type="text" name="search" id="search" class="form-control">
                     <button type="submit" class="btn btn-primary mt-2"> Search</button>
                 </form>
             </div>
@@ -29,7 +28,7 @@
  @endif
 
       <div class="columns is-multiline">
-        @foreach ($product as $product)
+        @foreach ($products as $product)
         <div class="column is-4">
             <div class="card" style="height: 100%;">
               <div class="card-image">

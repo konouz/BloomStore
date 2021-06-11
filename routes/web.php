@@ -1,11 +1,15 @@
 <?php
+
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\ShopComponent;
 use App\Http\Livewire\CartComponent;
+
 use App\Http\Livewire\checkoutComponent;
 use App\Models\Product;
-use App\Http\Controllers\ProductController;
-// use Database\Seeders\VoyagerDatabaseSeeder;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,32 +22,23 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/products/list', [ProductController::class,'list'])->name('products.list');
 
-// Route::get('/', function () {
-//     $product=Product::all();
-//     return view('welcome',['products'=>$product]);
-// });
+//Route::get('products/search', [ProductController::class,'search'])->name('products.search');
 Route::resource('products', ProductController::class);
+
 
 Route::resource('categories', CategoryController::class);
 Route::resource('brands', BrandController::class);
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth'])->name('dashboard');
-
-
-
-Route::group(['prefix' => 'admin'], function () {
-    Voyager::routes();
-});
-require __DIR__.'/auth.php';
-
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
 Route::get('/', HomeComponent::class );
 
-Route::get('/shop', ShopComponent::class );
 
 Route::get('/cart', CartComponent::class );
 
 Route::get('/checkout', CheckoutComponent::class );
+

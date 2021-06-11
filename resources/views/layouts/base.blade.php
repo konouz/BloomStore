@@ -184,7 +184,8 @@
 		</div>
 	</header>
 
-    {{$slot}}
+    {{-- {{$slot}} --}}
+    @yield('content')
 
 	<footer id="footer">
 		<div class="wrap-footer-content footer-style-1">
