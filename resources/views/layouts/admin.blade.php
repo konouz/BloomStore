@@ -153,16 +153,16 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{ route('brands.create') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Add New Brand</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                {{-- <a href="{{ route('brands.list') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Edit Brand</p>
-                                </a>
+                                </a> --}}
                             </li>
                         </ul>
                     </li>
