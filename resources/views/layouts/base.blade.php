@@ -176,6 +176,10 @@
 								<li class="menu-item">
 									<a href="contact-us.html" class="link-term mercado-item-title">Contact Us</a>
 								</li>
+								<li class="menu-item">
+									<a href="/products" class="link-term mercado-item-title">Products</a>
+								</li>
+
 							</ul>
 						</div>
 					</div>
