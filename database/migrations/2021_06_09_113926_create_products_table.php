@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('slug')->unique()->nullable();
             $table->string('short_description')->nullable();
             $table->text('description')->nullable();
-            $table->integer('price');
+            $table->integer('regular_price');
             $table->integer('sale_price')->nullable();
             $table->integer('reviews')->default(0);
             $table->string('CID')->nullable();

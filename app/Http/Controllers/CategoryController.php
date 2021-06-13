@@ -16,8 +16,8 @@ class CategoryController extends Controller
     public function index()
     {
         $product = Product::all();
-        $category=Category::all();
-        return view('livewire.shop-component',['products'=>$product,'categories'=>$category]);
+        $categories = Category::with('children')->whereNull('parent_id')->get();
+        return view('livewire.shop-component',['products'=>$product,'categories'=>$categories]);
     }
 
     public function list()
