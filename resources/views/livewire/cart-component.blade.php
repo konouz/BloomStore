@@ -1,3 +1,4 @@
+@extends('layouts.base')
 <main id="main" class="main-site">
 
     <div class="container">
@@ -11,8 +12,12 @@
         <div class=" main-content-area">
 
             <div class="wrap-iten-in-cart">
+                @if(Session::has('success_message'))
+                <div class='alert alert-success'>
+                    <strong>Success</strong> {{Session::get('success_message')}}
+                </div>
+                @endif
                 @if (Cart::count() > 0)
-
                 <h3 class="box-title">Products Name</h3>
                 <ul class="products-cart">
                     @foreach (Cart::content() as $item)
@@ -47,12 +52,13 @@
             </div>
 
             <div class="summary">
-                <div class="order-summary">
+                {{-- <div class="order-summary">
                     <h4 class="title-box">Order Summary</h4>
-                    <p class="summary-info"><span class="title">Subtotal</span><b class="index">$512.00</b></p>
+                    <p class="summary-info"><span class="title">Subtotal</span><b class="index">${{Cart::subtotal()}}</b></p>
+                    <p class="summary-info"><span class="title">Tax</span><b class="index">${{Cart::tax()}}</b></p>
                     <p class="summary-info"><span class="title">Shipping</span><b class="index">Free Shipping</b></p>
-                    <p class="summary-info total-info "><span class="title">Total</span><b class="index">$512.00</b></p>
-                </div>
+                    <p class="summary-info total-info "><span class="title">Total</span><b class="index">${{Cart::total()}}</b></p>
+                </div> --}}
                 <div class="checkout-info">
                     <label class="checkbox-field">
                         <input class="frm-input " name="have-code" id="have-code" value="" type="checkbox"><span>I have promo code</span>

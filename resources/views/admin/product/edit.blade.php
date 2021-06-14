@@ -29,7 +29,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="inputName">Price</label>
-                                <input type="text" name="price" class="form-control" value="{{ old('price') ?? $product->price}}">
+                                <input type="text" name="regular_price" class="form-control" value="{{ old('regular_price') ?? $product->regular_price}}">
                             </div>
                             <div class="form-group">
                                 <label for="inputName">Product Image</label>

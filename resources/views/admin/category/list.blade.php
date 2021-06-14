@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>brands</h1>
+                    <h1>Products</h1>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -20,19 +20,20 @@
                             <table class="dataTable table table-bordered table-striped table-hover">
                                 <thead>
                                 <tr>
-                                    <th>brand ID</th>
-                                    <th>brand Name</th>
-                                    <th>Created At</th>
+                                    <th>Category ID</th>
+                                    <th>Category Name</th>
+                                    <th> Parent ID</th>
+                                    <th> Icon</th>
                                     <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($brand as $brand)
+                                @foreach($category as $category)
                                     <tr>
-                                        <td>{{ $brand->id }}</td>
-                                        <td>{{$brand->name}}</td>
-                                        <td>{{ $brand->created_at}}</td>
-
+                                        <td>{{ $category->id }}</td>
+                                        <td>{{$category->name}}</td>
+                                        <td>{{$category->parent_id}}</td>
+                                        <td>{{ $category->icon}}</td>
                                         <td class="text-right">
 
                                             <a class="btn btn-primary btn-sm mr-3" href="#">
@@ -40,13 +41,13 @@
                                                 </i>
                                                 View
                                             </a>
-                                            <a class="btn btn-info btn-sm" href="{{ route('brands.edit', $brand) }}">
+                                            <a class="btn btn-info btn-sm" href="{{ route('categories.edit', $category) }}">
                                                 <i class="fas fa-pencil-alt">
                                                 </i>
                                                 Edit
                                             </a>
                                             <a class="btn btn-danger btn-sm"
-                                               href="{{ route('brands.destroy', $brand) }}">
+                                               href="{{ route('categories.destroy', $category) }}">
                                                 <i class="fas fa-trash">
                                                 </i>
                                                 Delete
