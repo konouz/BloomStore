@@ -17,42 +17,42 @@ class ProductController extends Controller
     {
 
         $product = Product::all();
-        $categories = Category::with('children')->whereNull('parent_id')->get()  ;
-        return view('shop', ['products' => $product, 'categories'  => $categories]);
+        $categories = Category::with('children')->whereNull('parent_id')->get();
+        return view('livewire.shop-component', ['products' => $product, 'categories'  => $categories]);
 
 
 
-//         if ($request->search) {
-//             $q = $request->search;
+        //         if ($request->search) {
+        //             $q = $request->search;
 
-//             $products = Product::where('name', 'like', '%' . $q . '%')->get();
+        //             $products = Product::where('name', 'like', '%' . $q . '%')->get();
 
-//             if ($products->count()) {
+        //             if ($products->count()) {
 
-//                 return view('livewire.shop-component', [
-//                     'products' =>  $products
-//                 ]);
-//             } else {
+        //                 return view('livewire.shop-component', [
+        //                     'products' =>  $products
+        //                 ]);
+        //             } else {
 
-//                 return view('livewire.shop-component', ['products' => []])->with([
-//                     'status' => 'search failed ,, please try again'
-//                 ]);
-//             }
-//         } else {
-//             $products = Product::OrderBy('created_at', 'desc')->get();
-//         }
+        //                 return view('livewire.shop-component', ['products' => []])->with([
+        //                     'status' => 'search failed ,, please try again'
+        //                 ]);
+        //             }
+        //         } else {
+        //             $products = Product::OrderBy('created_at', 'desc')->get();
+        //         }
 
 
-//         return view('livewire.shop-component', ['products' => $products]);
+        //         return view('livewire.shop-component', ['products' => $products]);
 
 
         // return view('livewire.shop-component', ['products' => $product]);
 
     }
 
-        //$product = Product::all();
+    //$product = Product::all();
 
-       // return view('livewire.shop-component', ['products' => $product]);
+    // return view('livewire.shop-component', ['products' => $product]);
 
     public function list()
     {
@@ -68,8 +68,9 @@ class ProductController extends Controller
      */
     public function create()
     {
+        $categories = Category::with('children')->whereNull('parent_id')->get();
 
-        return view('admin.product.create');
+        return view('admin.product.create', ['categories' => $categories]);
     }
 
     /**
@@ -139,8 +140,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('admin.product.edit',['product' => $product]);
-
+        return view('admin.product.edit', ['product' => $product]);
     }
 
 
@@ -162,10 +162,14 @@ class ProductController extends Controller
             'name'              => 'required|min:4|max:255',
             'price'             => 'required|integer',
             'product_image'     => 'required|url',
-            'description'       => 'required|min:20|max:255'
+            'description'       => 'required|min:20|max:255',
+            'category_id'       => 'required|numeric|exists:categories,id'
+
         ]);
 
         $product->update($request->all());
+        $product->category_id = $request->category_id;
+
 
         return redirect()->route('products.list');
     }
@@ -179,10 +183,6 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-        return redirect()->route('products.show');
-
-
-
-
+        return redirect()->route('products.list');
     }
 }

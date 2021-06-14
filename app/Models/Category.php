@@ -21,6 +21,5 @@ class Category extends Model
   }
 
 
-//     protected $table= "Categories";
 
 }

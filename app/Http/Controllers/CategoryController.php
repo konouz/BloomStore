@@ -16,8 +16,15 @@ class CategoryController extends Controller
     public function index()
     {
         $product = Product::all();
-        $category = Category::all();
-        return view('livewire.shop-component',['products'=>$product,'categories'=>$category]);
+        $categories = Category::with('children')->whereNull('parent_id')->get();
+        return view('livewire.shop-component',['products'=>$product,'categories'=>$categories]);
+    }
+
+    public function list()
+    {
+        $category= Category::all();
+
+        return view('admin.category.list', ['category' => $category]);
     }
 
     /**
@@ -38,17 +45,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
+
         $request->validate([
         'name'=> 'required|min:4|max:255',
         'icon'=> 'required|url',
         'parent_id' => 'sometimes|nullable|numeric'
         ]);
-        $category = new Category();
-        $category->name = $request->name;
-        $category->icon= $request->icon;
-        $category->parent_id = $request->parent_id;
-        $category->save();
+
+        $category= Category::create($request->all());
         return redirect()->route('categories.index');
     }
 
@@ -60,7 +64,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return view('category.show', ['category' => $category]);
+        // return view('category.show', ['category' => $category]);
     }
 
     /**
@@ -89,7 +93,7 @@ class CategoryController extends Controller
              'parent_id' => 'sometimes|nullable|numeric'
         ]);
         $category->update($request->all());
-        return redirect()->route('categories.show', $category);
+        return redirect()->route('categories.list');
     }
 
     /**
@@ -101,6 +105,6 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        return redirect()->route('categories.index');
+        return redirect()->route('categories.list');
     }
 }

@@ -22,8 +22,6 @@
                                 <tr>
                                     <th>brand ID</th>
                                     <th>brand Name</th>
-                                    <th> Price</th>
-                                    <th>Description</th>
                                     <th>Created At</th>
                                     <th></th>
                                 </tr>
@@ -33,9 +31,8 @@
                                     <tr>
                                         <td>{{ $brand->id }}</td>
                                         <td>{{$brand->name}}</td>
-                                        <td>{{ $brand->price}}</td>
-                                        <td>{{$brand->brand_image}}</td>
-                                        <td>{{$brand->description}}</span></td>
+                                        <td>{{ $brand->created_at}}</td>
+
                                         <td class="text-right">
 
                                             <a class="btn btn-primary btn-sm mr-3" href="#">

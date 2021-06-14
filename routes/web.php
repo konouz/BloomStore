@@ -24,22 +24,18 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/products/list', [ProductController::class,'list'])->name('products.list');
 
-// Route::get('/', function () {
-//     $product=Product::all();
-//     return view('welcome',['products'=>$product]);
-// });
+Route::get('/products/list', [ProductController::class, 'list'])->name('products.list');
 Route::resource('products', ProductController::class);
+Route::get('/categories/list', [CategoryController::class, 'list'])->name('categories.list');
 Route::resource('categories', CategoryController::class);
+Route::get('/brands/list', [BrandController::class, 'list'])->name('brands.list');
 Route::resource('brands', BrandController::class);
 
- Route::get('/dashboard', function () {
-     return view('dashboard');
- })->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-//Route::get('products/search', [ProductController::class,'search'])->name('products.search');
-// Route::resource('products', ProductController::class);
 Route::resource('categories', CategoryController::class);
 Route::resource('brands', BrandController::class);
 
