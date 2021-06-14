@@ -17,15 +17,15 @@
 							<div class="product-gallery">
 							  <ul class="slides">
 
-							    <li data-thumb="{{ asset ('assets/images/products/digital_18.jpg')}}">
-							    	<img src="{{ asset ('assets/images/products/digital_18.jpg')}}" alt="product thumbnail" />
+							    <li data-thumb="{{ asset('assets/images/products')}}/{{$product->product_image}}">
+							    	<img src="{{ asset('assets/images/products')}}/{{$product->product_image}}" alt="{{$product->image}}" />
 							    </li>
 
-							    <li data-thumb="{{ asset ('assets/images/products/digital_17.jpg')}}">
+							    {{-- <li data-thumb="{{ asset ('assets/images/products/digital_17.jpg')}}">
 							    	<img src="{{ asset ('assets/images/products/digital_17.jpg')}}" alt="product thumbnail" />
-							    </li>
+							    </li> --}}
 
-							    <li data-thumb="{{ asset ('assets/images/products/digital_15.jpg')}}">
+							    {{-- <li data-thumb="{{ asset ('assets/images/products/digital_15.jpg')}}">
 							    	<img src="{{ asset ('assets/images/products/digital_15.jpg')}}" alt="product thumbnail" />
 							    </li>
 
@@ -47,7 +47,7 @@
 
 							    <li data-thumb="{{ asset ('assets/images/products/digital_14.jpg')}}">
 							    	<img src="{{ asset ('assets/images/products/digital_14.jpg')}}" alt="product thumbnail" />
-							    </li>
+							    </li> --}}
 							  </ul>
 							</div>
 						</div>
@@ -60,19 +60,15 @@
                                 <i class="fa fa-star" aria-hidden="true"></i>
                                 <a href="#" class="count-review">(05 review)</a>
                             </div>
-                            <h2 class="product-name">Radiant-360 R6 Wireless Omnidirectional Speaker [White]</h2>
+                            <h2 class="product-name">{{$product->name}}</h2>
                             <div class="short-desc">
-                                <ul>
-                                    <li>7,9-inch LED-backlit, 130Gb</li>
-                                    <li>Dual-core A7 with quad-core graphics</li>
-                                    <li>FaceTime HD Camera 7.0 MP Photos</li>
-                                </ul>
+								{{$product->description}}
                             </div>
                             <div class="wrap-social">
 							    {{-- <a class="link-socail" href="#"><img src="{{asset($product->product_image)}}" alt="{{$product->name}}"></a> --}}
                             	<a class="link-socail" href="#"><img src="{{('assets/images/social-list.png')}}" alt=""></a>
                             </div>
-                            <div class="wrap-price"><span class="product-price">$250.00</span></div>
+                            <div class="wrap-price"><span class="product-price">{{$product->regular_price}}</span></div>
                             <div class="stock-info in-stock">
                                 <p class="availability">Availability: <b>In Stock</b></p>
                             </div>
