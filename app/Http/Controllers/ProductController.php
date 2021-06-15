@@ -18,7 +18,7 @@ class ProductController extends Controller
 
         $product = Product::all();
         $categories = Category::with('children')->whereNull('parent_id')->get()  ;
-        return view('livewire.shop-component', ['products' => $product, 'categories'  => $categories]);
+        return view('shop', ['products' => $product, 'categories'  => $categories]);
 
 
 

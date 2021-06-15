@@ -6,17 +6,24 @@ use App\Models\Product;
 use App\Models\Category;
 use Livewire\Component;
 use Livewire\withPagination;
+use Illuminate\Http\Request;
 
 use Cart;
 
 class ShopComponent extends Component
 {
+    public $added = false;
+    // public function store (Request $request)
+    // {
+    //     Cart::add($request->product_id,$request->product_name,$request->product_price)->associate('app\Models\Product');
+    //     return redirect()->route('product.cart');
+    // }
 
-    public function store ($product_id,$product_name,$product_price)
+    public function store ($product_id,$product_name, $product_price)
     {
-        Cart::add($product_id,$product_name,$product_price)->associate('app\Models\Product');
+        Cart::add($product_id,$product_name, 1, $product_price)->associate('app\Models\Product');
+        $this->added = true;
         session()->flash('success massage','Item added in Cart');
-        return redirect()->route('product.cart');
     }
 
     use withPagination;
