@@ -6,6 +6,7 @@
     <title>BloomStore| Dashboard </title>
 
     <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.1.0/css/adminlte.min.css" integrity="sha512-mxrUXSjrxl8vm5GwafxcqTrEwO1/oBNU25l20GODsysHReZo4uhVISzAKzaABH6/tTfAxZrY2FprmeAP5UZY8A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/icheck-bootstrap/3.0.1/icheck-bootstrap.min.css" integrity="sha512-8vq2g5nHE062j3xor4XxPeZiPjmRDh6wlufQlfC6pdQ/9urJkU07NM0tEREeymP++NczacJ/Q59ul+/K2eYvcg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet"
@@ -107,15 +108,15 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{ route('categories.create') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Add New Category</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{route('categories.list')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Edit Categories</p>
+                                    <p> Categories</p>
                                 </a>
                             </li>
                         </ul>
@@ -159,10 +160,10 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                {{-- <a href="{{ route('brands.list') }}" class="nav-link">
+                                <a href="{{ route('brands.list') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Edit Brand</p>
-                                </a> --}}
+                                    <p> Brands</p>
+                                </a>
                             </li>
                         </ul>
                     </li>
@@ -186,21 +187,16 @@
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
-                    @if(Session::has('success'))
+                    @if($message= Session::get('success'))
                         <div class="alert alert-success alert-dismissible">
-                            <h5><i class="icon fas fa-check"></i> Success!</h5>
-                            {{ Session::get('success') }}
+                            <h5><i class="icon fas fa-check"></i><strong>{{ $message }}</strong>
+                            </h5>
                         </div>
                     @endif
 
-                    @if(Session::has('error'))
+                    @if($message=Session::get('error'))
                         <div class="alert alert-danger alert-dismissible">
-                            <h5><i class="icon fas fa-ban"></i> Error!</h5>
-                            @if(is_array(Session::get('error')))
-                                {{ implode(', ', Session::get('error')) }}
-                            @else
-                                {{ Session::get('error') }}
-                            @endif
+                            <h5><i class="icon fas fa-ban"></i><strong>{{ $message }}</strong></h5>
                         </div>
                     @endif
                 </div>
@@ -220,16 +216,16 @@
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
-
 <script src="{{ asset('js/app.js') }}"></script>
 <script
-  src="https://code.jquery.com/jquery-3.6.0.js"
-  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-  crossorigin="anonymous"></script>
+src="https://code.jquery.com/jquery-3.6.0.js"
+integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.bootstrap.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.1.0/js/adminlte.min.js" integrity="sha512-AJUWwfMxFuQLv1iPZOTZX0N/jTCIrLxyZjTRKQostNU71MzZTEPHjajSK20Kj1TwJELpP7gl+ShXw5brpnKwEg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+@stack('scripts')
 
 </body>
 </html>

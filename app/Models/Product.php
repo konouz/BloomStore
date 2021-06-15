@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    use HasFactory;
+    // use HasFactory;
     protected $table= "Products";
     protected $fillable = ['name','regular_price','product_image'];
 
@@ -15,6 +15,11 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class);
     }
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class);
+    }
+
 
 
 }
