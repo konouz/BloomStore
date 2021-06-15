@@ -18,7 +18,7 @@
 							  <ul class="slides">
 
 							    <li data-thumb="{{ asset('assets/images/products')}}/{{$product->product_image}}">
-							    	<img src="{{ asset('assets/images/products')}}/{{$product->product_image}}" alt="{{$product->image}}" />
+                                    <img src="{{asset($product->product_image)}}" alt="{{$product->name}}">
 							    </li>
 
 							    {{-- <li data-thumb="{{ asset ('assets/images/products/digital_17.jpg')}}">
