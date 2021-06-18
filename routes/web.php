@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Searchcontroller;
 use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\ShopComponent;
 use App\Http\Livewire\CartComponent;
@@ -27,6 +29,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/products/list', [ProductController::class, 'list'])->name('products.list');
 Route::resource('products', ProductController::class);
+Route::resource('products', Searchcontroller::class );
 Route::get('/categories/list', [CategoryController::class, 'list'])->name('categories.list');
 Route::resource('categories', CategoryController::class);
 Route::get('/brands/list', [BrandController::class, 'list'])->name('brands.list');
@@ -44,6 +47,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('/', HomeComponent::class );
+
+
 Route::get('/cart', CartComponent::class )->name('product.cart');
 Route::get('/checkout', CheckoutComponent::class );
 Route::get('/shop', ShopComponent::class );

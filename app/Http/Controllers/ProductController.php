@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+
 
 class ProductController extends Controller
 {
@@ -13,12 +15,12 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
 
         $product = Product::all();
         $categories = Category::with('children')->whereNull('parent_id')->get()  ;
-        return view('shop', ['products' => $product, 'categories'  => $categories]);
+        return view('livewire.shop-component', ['products' => $product, 'categories'  => $categories]);
 
 
 
@@ -102,28 +104,7 @@ class ProductController extends Controller
      */
 
 
-    public function search(Request $request)
-    {
-        $request->validate([
-            'q' => 'required'
-        ]);
-        $q = $request->q;
 
-        $filteredUsers = Product::where('name', 'like', '%' . $q . '%')->get();
-        dd($filteredUsers);
-
-        if ($filteredUsers->count()) {
-
-            return view('pro')->with([
-                'products' =>  $filteredUsers
-            ]);
-        } else {
-
-            return view('pro')->with([
-                'status' => 'search failed ,, please try again'
-            ]);
-        }
-    }
     public function show()
 
     {
