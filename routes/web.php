@@ -36,12 +36,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::resource('categories', CategoryController::class);
-Route::resource('brands', BrandController::class);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
 
 Route::get('/', HomeComponent::class );
 Route::get('/cart', CartComponent::class )->name('product.cart');

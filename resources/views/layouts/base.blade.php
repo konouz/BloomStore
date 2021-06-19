@@ -41,7 +41,7 @@
 							</ul>
 						</div>
 						<div class="topbar-menu right-menu">
-							<ul>
+							{{-- <ul>
 								<li class="menu-item" ><a title="Register or Login" href="login.html">Login</a></li>
 								<li class="menu-item" ><a title="Register or Login" href="register.html">Register</a></li>
 								<li class="menu-item lang-menu menu-item-has-children parent">
@@ -67,7 +67,7 @@
 										</li>
 									</ul>
 								</li>
-							</ul>
+							</ul> --}}
 						</div>
 					</div>
 				</div>
@@ -75,11 +75,11 @@
 				<div class="container">
 					<div class="mid-section main-info-area">
 
-						<div class="wrap-logo-top left-section">
+						{{-- <div class="wrap-logo-top left-section">
 							<a href="index.html" class="link-to-home"><img src="{{asset('assets/images/logo-top-1.png')}}" alt="mercado"></a>
-						</div>
+						</div> --}}
 
-						<div class="wrap-search center-section">
+						{{-- <div class="wrap-search center-section">
 							<div class="wrap-search-form">
 								<form action="#" id="form-search-top" name="form-search-top">
 									<input type="text" name="search" value="" placeholder="Search here...">
@@ -109,7 +109,7 @@
 									</div>
 								</form>
 							</div>
-						</div>
+						</div> --}}
 
 						<div class="wrap-icon right-section">
 							<div class="wrap-icon-section wishlist">
