@@ -26,7 +26,7 @@
                             <figure><img src="{{asset('assets/images/products')}}/{{$item->model->image}}" alt=""></figure>
                         </div>
                         <div class="product-name">
-                            <a class="link-to-product" href="{{route('product.details',['slug'->$item->model->slug])}}">{{$item->model->name}}</a>
+                            <a class="link-to-product" href="{{route('product.details', [ 'slug' => $item->model->slug])}}">{{$item->model->name}}</a>
                         </div>
                         <div class="price-field produtc-price"><p class="price">{{$item->model->regular_price}}</p></div>
                         <div class="quantity">
@@ -52,13 +52,13 @@
             </div>
 
             <div class="summary">
-                {{-- <div class="order-summary">
+                <div class="order-summary">
                     <h4 class="title-box">Order Summary</h4>
                     <p class="summary-info"><span class="title">Subtotal</span><b class="index">${{Cart::subtotal()}}</b></p>
                     <p class="summary-info"><span class="title">Tax</span><b class="index">${{Cart::tax()}}</b></p>
                     <p class="summary-info"><span class="title">Shipping</span><b class="index">Free Shipping</b></p>
                     <p class="summary-info total-info "><span class="title">Total</span><b class="index">${{Cart::total()}}</b></p>
-                </div> --}}
+                </div>
                 <div class="checkout-info">
                     <label class="checkbox-field">
                         <input class="frm-input " name="have-code" id="have-code" value="" type="checkbox"><span>I have promo code</span>
@@ -91,7 +91,7 @@
                             </div>
                             <div class="product-info">
                                 <a href="#" class="product-name"><span>Radiant-360 R6 Wireless Omnidirectional Speaker [White]</span></a>
-                                <div class="wrap-price"><span class="product-price">$250.00</span></div>
+                                <div class="wrap-price"><span class="product-price">22</span></div>
                             </div>
                         </div>
 
