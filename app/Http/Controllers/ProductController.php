@@ -16,37 +16,43 @@ class ProductController extends Controller
     public function index(Request $request)
     {
 
-        $product = Product::all();
+        $products = Product::all();
         $categories = Category::with('children')->whereNull('parent_id')->get()  ;
-        return view('shop', ['products' => $product, 'categories'  => $categories]);
 
 
 
-        //         if ($request->search) {
-        //             $q = $request->search;
-
-        //             $products = Product::where('name', 'like', '%' . $q . '%')->get();
-
-        //             if ($products->count()) {
-
-        //                 return view('livewire.shop-component', [
-        //                     'products' =>  $products
-        //                 ]);
-        //             } else {
-
-        //                 return view('livewire.shop-component', ['products' => []])->with([
-        //                     'status' => 'search failed ,, please try again'
-        //                 ]);
-        //             }
-        //         } else {
-        //             $products = Product::OrderBy('created_at', 'desc')->get();
-        //         }
+        if ($request->search) {
+        $q = $request->search;
 
 
-        //         return view('livewire.shop-component', ['products' => $products]);
+
+        $products = Product::where('name', 'like', '%' . $q . '%')->get();
+
+        if ($products->count()) {
+
+            return view('livewire.shop-component', [
+                'products' =>  $products ,'categories'  => $categories
+            ]);
+        } else {
+
+            return view('livewire.shop-component', ['products' => []])->with([
+                'status' => 'search failed ,, please try again'
+            ]);
+        }
+    } else {
+        $products = Product::OrderBy('created_at', 'desc')->get();
+    }
 
 
-        // return view('livewire.shop-component', ['products' => $product]);
+    $products = Product::where(function ($query) use ($request) {
+        return $request->price ?
+            $query->where('price', $request->price) : '';
+    })->get();
+
+    $selected = $request->price;
+
+
+    return  view('livewire.shop-component', ['products' => $products , 'selected' => $selected  , 'categories'  => $categories]);
 
     }
 
