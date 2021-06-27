@@ -4,11 +4,12 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Product;
 
-use Cart;
 
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class DetailsComponent extends Component
 {
+    public $added = false;
     public $slug;
 
     public function mount($slug)
@@ -22,11 +23,11 @@ class DetailsComponent extends Component
         $product= Product::where('slug',$this->slug)->first();
         return view('livewire.details-component',['product'=>$product]);
     }
-    //     public function store ($product_id,$product_name,$product_price)
-    // {
+        public function store ($product_id,$product_name,$product_price)
+    {
 
-    //     Cart::add($product_id,$product_name,$product_price)->associate('app\Models\Product');
-    //     session()->flash('success massage','Item added in Cart');
-    //     return redirect()->route('product.cart');
-    // }
+        Cart::add($product_id,$product_name,$product_price)->associate('app\Models\Product');
+        session()->flash('success massage','Item added in Cart');
+        return redirect()->route('product.cart');
+    }
 }

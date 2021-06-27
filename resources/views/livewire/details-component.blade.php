@@ -66,7 +66,7 @@
                             </div>
                             <div class="wrap-social">
 							    {{-- <a class="link-socail" href="#"><img src="{{asset($product->product_image)}}" alt="{{$product->name}}"></a> --}}
-                            	<a class="link-socail" href="#"><img src="{{('assets/images/social-list.png')}}" alt=""></a>
+                            	<a class="link-socail" href="#"><img src="{{asset('assets/images/social-list.png')}}" alt=""></a>
                             </div>
                             <div class="wrap-price"><span class="product-price">{{$product->regular_price}}</span></div>
                             <div class="stock-info in-stock">
@@ -82,7 +82,7 @@
 								</div>
 							</div>
 							<div class="wrap-butons">
-								{{-- <a href="#" class="btn add-to-cart" wire::click.prevent="store({{$product->id}},{{$product->name}},{{$product->regular_price}})">Add to Cart</a> --}}
+								<a href="#" class="btn add-to-cart" wire::click.prevent="store({{$product->id}},{{$product->name}},{{$product->regular_price}})">   {{ $added ? 'added' : 'Add To Cart' }}</a>
                                 <div class="wrap-btn">
                                     <a href="#" class="btn btn-compare">Add Compare</a>
                                     <a href="#" class="btn btn-wishlist">Add Wishlist</a>
@@ -125,7 +125,7 @@
 											<ol class="commentlist">
 												<li class="comment byuser comment-author-admin bypostauthor even thread-even depth-1" id="li-comment-20">
 													<div id="comment-20" class="comment_container">
-														<img alt="" src="{{('assets/images/author-avata.jpg')}}" height="80" width="80">
+														<img alt="" src="{{asset('assets/images/author-avata.jpg')}}" height="80" width="80">
 														<div class="comment-text">
 															<div class="star-rating">
 																<span class="width-80-percent">Rated <strong class="rating">5</strong> out of 5</span>
@@ -196,7 +196,7 @@
 						</div>
 					</div>
 				</div><!--end main products area-->
-
+{{--
 				<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 sitebar">
 					<div class="widget widget-our-services ">
 						<div class="widget-content">
@@ -455,7 +455,7 @@
 							</div>
 						</div><!--End wrap-products-->
 					</div>
-				</div>
+				</div> --}}
 
 			</div><!--end row-->
 
