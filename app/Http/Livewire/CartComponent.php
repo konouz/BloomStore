@@ -31,6 +31,7 @@ class CartComponent extends Component
     {
         $categories=Category::all();
         $products=Product::paginate(12);
-        return view('livewire.cart-component', ['products'=>$products], ['categories'=>$categories]);
+        return view('livewire.cart-component', ['products'=>$products], ['categories'=>$categories])->layout('layouts.base');
+
     }
 }

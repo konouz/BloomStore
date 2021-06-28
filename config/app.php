@@ -229,6 +229,9 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Cart' => Gloudemans\shoppingcart\Facades\Cart::class,
+        'layout' => 'app.other_default_layout'
+
+
     ],
 
 ];

@@ -116,7 +116,6 @@ class ProductController extends Controller
         $q = $request->q;
 
         $filteredUsers = Product::where('name', 'like', '%' . $q . '%')->get();
-        dd($filteredUsers);
 
         if ($filteredUsers->count()) {
 

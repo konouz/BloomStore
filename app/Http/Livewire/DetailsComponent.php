@@ -14,7 +14,6 @@ class DetailsComponent extends Component
 
     public function mount($slug)
     {
-        // dd($slug);
         $this->slug =$slug;
     }
 
@@ -28,6 +27,6 @@ class DetailsComponent extends Component
 
         Cart::add($product_id,$product_name,$product_price)->associate('app\Models\Product');
         session()->flash('success massage','Item added in Cart');
-        return redirect()->route('product.cart');
+        return redirect()->route('product.cart')->layout('layouts.base');
     }
 }

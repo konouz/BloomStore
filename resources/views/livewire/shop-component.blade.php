@@ -1,61 +1,6 @@
-@extends('layouts.base')
+
 <main id="main" class="main-site left-sidebar">
     <div class="container">
-    <div class="container">
-        <form action="products" >
-            @csrf
-            <input type="text" name="search" id="q" class="form-control">
-            <button type="submit" class="btn btn-primary mt-2">Search</button>
-        </form>
-        <div class="col-md-6 offset-md-2">
-            @if( session('status'))
-            <div class="alert alert-info">
-                {{ session('status')}}
-            </div>
-            @endif
-
-	    		<form action="products">
-                @csrf
-                <div class="slidecontainer">
-
-                <input type="range" min="1" max="100" value="50">
-
-
-    			<select name="price" id="input">
-
-    				,<option value="0">Select Price</option>
-    				@foreach ($products  as $price)
-    					<option value="{{ $price->price }}" {{ $price->price == $price['price'] ? 'selected' : '' }}>
-    					{{ $price['price'] }}
-    				    </option>
-    				@endforeach
-    			</select>
-
-	    	 <input type="submit" class="btn btn-danger btn-sm" value="Filter"> -->
-	    		</form>
-            @foreach ($products as $product)
-            <li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
-                <div class="product product-style-3 equal-elem ">
-                    <div class="product-thumnail">
-                        <a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-                            <figure><img src="{{asset($product->product_image)}}" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
-                        </a>
-
-                    </div>
-                    <div class="product-info">
-                        <a href="#" class="product-name"><span>{{$product->name}}</span></a>
-                        <div class="wrap-price"><span class="product-price">{{$product->price}}</span></div>
-                        <a href="#" class="btn add-to-cart">Add To Cart</a>
-                    </div>
-                </div>
-            </li>
-            @endforeach
-            </div>
-
-
-
-
-
         <div class="wrap-breadcrumb">
             <ul>
                 <li class="item-link"><a href="#" class="link">home</a></li>
@@ -102,10 +47,7 @@
                 <!--end wrap shop control-->
                 <div class="row">
                     <ul class="product-list grid-products equal-container">
-<<<<<<< HEAD
-
-=======
-                        @foreach ($products as $product)
+                       @foreach ($products as $product)
                             <li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
                                 <div class="product product-style-3 equal-elem ">
                                     <div class="product-thumnail">
@@ -135,7 +77,6 @@
                                 </div>
                             </li>
                         @endforeach
->>>>>>> bd6c93f64be8cc6b0bddb05629887c444c813f1a
                     </ul>
                 </div>
                 <div class="wrap-pagination-info">
@@ -314,3 +255,54 @@
 
 </div>
 </main>
+{{-- @endsection --}}
+
+{{-- <form action="products" >
+    @csrf
+    <input type="text" name="search" id="q" class="form-control">
+    <button type="submit" class="btn btn-primary mt-2">Search</button>
+</form>
+<div class="col-md-6 offset-md-2">
+    @if( session('status'))
+    <div class="alert alert-info">
+        {{ session('status')}}
+    </div>
+    @endif
+
+        <form action="products">
+        @csrf
+        <div class="slidecontainer">
+
+        <input type="range" min="1" max="100" value="50">
+
+
+        <select name="price" id="input">
+
+            ,<option value="0">Select Price</option>
+            @foreach ($products  as $price)
+                <option value="{{ $price->price }}" {{ $price->price == $price['price'] ? 'selected' : '' }}>
+                {{ $price['price'] }}
+                </option>
+            @endforeach
+        </select>
+
+     <input type="submit" class="btn btn-danger btn-sm" value="Filter"> -->
+        </form>
+    @foreach ($products as $product)
+    <li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
+        <div class="product product-style-3 equal-elem ">
+            <div class="product-thumnail">
+                <a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
+                    <figure><img src="{{asset($product->product_image)}}" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
+                </a>
+
+            </div>
+            <div class="product-info">
+                <a href="#" class="product-name"><span>{{$product->name}}</span></a>
+                <div class="wrap-price"><span class="product-price">{{$product->price}}</span></div>
+                <a href="#" class="btn add-to-cart">Add To Cart</a>
+            </div>
+        </div>
+    </li>
+    @endforeach
+    </div> --}}
