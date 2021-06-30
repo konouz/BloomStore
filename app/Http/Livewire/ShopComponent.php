@@ -26,7 +26,7 @@ class ShopComponent extends Component
     }
     public function addToWishlist($product_id,$product_name, $product_price){
         Cart::instance('wishlist')->add($product_id,$product_name,1,$product_price)->associate('app\Models\Product');
-
+        $this->emitTo('wish-list-count-component','refreshComponent');
     }
 
     use withPagination;
