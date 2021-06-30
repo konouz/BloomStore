@@ -28,6 +28,15 @@ class ShopComponent extends Component
         Cart::instance('wishlist')->add($product_id,$product_name,1,$product_price)->associate('app\Models\Product');
         $this->emitTo('wish-list-count-component','refreshComponent');
     }
+     public function removeFromWishlist($product_id){
+         foreach(Cart::instance('wishlist')->content() as $witem){
+             if($witem->id===$product_id){
+                Cart::instance('wishlist')->remove($witem->rowId);
+                $this->emitTo('wish-list-count-component','refreshComponent');
+                return;
+             }
+         }
+     }
 
     use withPagination;
     public function render()
