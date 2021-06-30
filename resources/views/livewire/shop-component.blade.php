@@ -1,4 +1,3 @@
-
 <main id="main" class="main-site left-sidebar">
     <div class="container">
         <div class="wrap-breadcrumb">
@@ -45,37 +44,73 @@
                     </div>
                 </div>
                 <!--end wrap shop control-->
+                <style>
+                    .product-wish {
+                        position: absolute;
+                        top: 10%;
+                        left: 0;
+                        z-index: 99;
+                        right: 30px;
+                        text-align: right;
+                        padding-top: 0;
+                    }
+
+                    .product-wish .fa {
+                        color: #cbcbcb;
+                        font-size: 32px;
+                    }
+
+                    .product-wish .fa:hover {
+                        color: #ff7007;
+                    }
+
+                    .fill-heart {
+                        color: :#ff7007 !important;
+                    }
+                </style>
                 <div class="row">
+
                     <ul class="product-list grid-products equal-container">
-                       @foreach ($products as $product)
-                            <li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
-                                <div class="product product-style-3 equal-elem ">
-                                    <div class="product-thumnail">
-                                        <a href="{{ route('product.details', ['slug' => $product->slug]) }}"
-                                            title="{{ $product->name }}">
-                                            <figure><img src="{{ asset($product->product_image) }}"
-                                                    alt="{{ $product->name }}"></figure>
-                                        </a>
+                        @php
+                            $witems=Cart::instance('wishlist')->content()->pluck('id');
+                        @endphp
+                        @foreach ($products as $product)
+                        <li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
+                            <div class="product product-style-3 equal-elem ">
+                                <div class="product-thumnail">
+                                    <a href="{{ route('product.details', ['slug' => $product->slug]) }}"
+                                        title="{{ $product->name }}">
+                                        <figure><img src="{{ asset($product->product_image) }}"
+                                                alt="{{ $product->name }}"></figure>
+                                    </a>
+                                </div>
+                                <div class="product-info">
+                                    <a href="{{ route('product.details', ['slug' => $product->slug]) }}"
+                                        class="product-name"><span>{{ $product->name }}</span></a>
+                                    <div class="wrap-price"><span
+                                            class="product-price">{{ $product->regular_price }}</span>
                                     </div>
-                                    <div class="product-info">
-                                        <a href="{{ route('product.details', ['slug' => $product->slug]) }}"
-                                            class="product-name"><span>{{ $product->name }}</span></a>
-                                        <div class="wrap-price"><span class="product-price">{{ $product->regular_price }}</span>
-                                        </div>
-                                        <a href="#" class="btn add-to-cart"
-                                            wire:click.prevent="store({{ $product->id }},'{{ $product->name }}',{{ $product->regular_price }})">
-                                            {{ $added ? 'added' : 'Add To Cart' }}
-                                        </a>
-                                    </div>
-                                    <div>
-                                        @if (session()->has('success massage'))
-                                            <div class="alert alert-success">
-                                                {{ session('success massage') }}
-                                            </div>
+                                    <a href="#" class="btn add-to-cart"
+                                        wire:click.prevent="store({{ $product->id }},'{{ $product->name }}',{{ $product->regular_price }})">
+                                        {{ $added ? 'added' : 'Add To Cart' }}
+                                    </a>
+                                    <div class="product-wish">
+                                        @if($witems->contains($product->id))
+                                         <a href="#"><i class="fa fa-heart fill-heart"></i></a>
+                                        s @else
+                                         <a href="#" wire:click.prevent="addToWishlist({{ $product->id }},'{{ $product->name }}',{{ $product->regular_price }})"><i class="fa fa-heart"></i></a>
                                         @endif
                                     </div>
                                 </div>
-                            </li>
+                                <div>
+                                    @if (session()->has('success massage'))
+                                    <div class="alert alert-success">
+                                        {{ session('success massage') }}
+                                    </div>
+                                    @endif
+                                </div>
+                            </div>
+                        </li>
                         @endforeach
                     </ul>
                 </div>
@@ -95,23 +130,22 @@
                     <h2 class="widget-title">All Categories</h2>
                     <div class="widget-content">
                         @foreach ($categories as $category)
-                            <ul class="list-category">
-                                <li class="category-item has-child-cate">
-                                    <a href="#" class="cate-link">{{ $category->name }}</a>
-                                    <span class="toggle-control">+</span>
-                                    @if ($category->children)
-                                        <ul class="sub-cate">
+                        <ul class="list-category">
+                            <li class="category-item has-child-cate">
+                                <a href="#" class="cate-link">{{ $category->name }}</a>
+                                <span class="toggle-control">+</span>
+                                @if ($category->children)
+                                <ul class="sub-cate">
 
-                                            @foreach ($category->children as $child)
+                                    @foreach ($category->children as $child)
 
-                                                <li class="category-item"><a href="#"
-                                                        class="cate-link">{{ $child->name }}</a></li>
-                                            @endforeach
-                                        </ul>
+                                    <li class="category-item"><a href="#" class="cate-link">{{ $child->name }}</a></li>
+                                    @endforeach
+                                </ul>
 
-                                    @endif
-                                </li>
-                            </ul>
+                                @endif
+                            </li>
+                        </ul>
                         @endforeach
                     </div>
                 </div><!-- Categories widget-->
@@ -188,7 +222,7 @@
                             <li class="product-item">
                                 <div class="product product-widget-style">
                                     <div class="thumbnnail">
-<!-- ***** -->
+                                        <!-- ***** -->
                                     </div>
                                     <div class="product-info">
                                         <a href="#" class="product-name"><span>Radiant-360 R6 Wireless Omnidirectional
@@ -200,60 +234,64 @@
                             {{-- <li class="product-item">
                                 <div class="product product-widget-style">
                                     <div class="thumbnnail">
-                                        <a href="{{route('product.details')}}" title="Radiant-360 R6 Wireless Omnidirectional Speaker [White]">
-                                            <figure><img src="{{asset('assets/images/products/digital_17.jpg')}}" alt=""></figure>
-                                        </a>
-                                    </div>
-                                    <div class="product-info">
-                                        <a href="#" class="product-name"><span>Radiant-360 R6 Wireless Omnidirectional Speaker...</span></a>
-                                        <div class="wrap-price"><span class="product-price">$168.00</span></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="product-item">
-                                <div class="product product-widget-style">
-                                    <div class="thumbnnail">
-                                        <a href="detail.html" title="Radiant-360 R6 Wireless Omnidirectional Speaker [White]">
-                                            <figure><img src="{{asset('assets/images/products/digital_18.jpg')}}" alt=""></figure>
-                                        </a>
-                                    </div>
-                                    <div class="product-info">
-                                        <a href="#" class="product-name"><span>Radiant-360 R6 Wireless Omnidirectional Speaker...</span></a>
-                                        <div class="wrap-price"><span class="product-price">$168.00</span></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="product-item">
-                                <div class="product product-widget-style">
-                                    <div class="thumbnnail">
-                                        <a href="detail.html" title="Radiant-360 R6 Wireless Omnidirectional Speaker [White]">
-                                            <figure><img src="{{asset('assets/images/products/digital_20.jpg')}}" alt=""></figure>
-                                        </a>
-                                    </div>
-                                    <div class="product-info">
-                                        <a href="#" class="product-name"><span>Radiant-360 R6 Wireless Omnidirectional Speaker...</span></a>
-                                        <div class="wrap-price"><span class="product-price">$168.00</span></div>
-                                    </div>
-                                </div>
-                            </li> --}}
-
-                        </ul>
+                                        <a href="{{route('product.details')}}" title="Radiant-360 R6 Wireless
+                            Omnidirectional Speaker [White]">
+                            <figure><img src="{{asset('assets/images/products/digital_17.jpg')}}" alt=""></figure>
+                            </a>
                     </div>
-                </div><!-- brand widget-->
+                    <div class="product-info">
+                        <a href="#" class="product-name"><span>Radiant-360 R6 Wireless Omnidirectional
+                                Speaker...</span></a>
+                        <div class="wrap-price"><span class="product-price">$168.00</span></div>
+                    </div>
+                </div>
+                </li>
+                <li class="product-item">
+                    <div class="product product-widget-style">
+                        <div class="thumbnnail">
+                            <a href="detail.html" title="Radiant-360 R6 Wireless Omnidirectional Speaker [White]">
+                                <figure><img src="{{asset('assets/images/products/digital_18.jpg')}}" alt=""></figure>
+                            </a>
+                        </div>
+                        <div class="product-info">
+                            <a href="#" class="product-name"><span>Radiant-360 R6 Wireless Omnidirectional
+                                    Speaker...</span></a>
+                            <div class="wrap-price"><span class="product-price">$168.00</span></div>
+                        </div>
+                    </div>
+                </li>
+                <li class="product-item">
+                    <div class="product product-widget-style">
+                        <div class="thumbnnail">
+                            <a href="detail.html" title="Radiant-360 R6 Wireless Omnidirectional Speaker [White]">
+                                <figure><img src="{{asset('assets/images/products/digital_20.jpg')}}" alt=""></figure>
+                            </a>
+                        </div>
+                        <div class="product-info">
+                            <a href="#" class="product-name"><span>Radiant-360 R6 Wireless Omnidirectional
+                                    Speaker...</span></a>
+                            <div class="wrap-price"><span class="product-price">$168.00</span></div>
+                        </div>
+                    </div>
+                </li> --}}
 
-
-
+                </ul>
             </div>
-            <!--end sitebar-->
+        </div><!-- brand widget-->
 
-        </div>
-        <!--end row-->
+
+
+    </div>
+    <!--end sitebar-->
+
+    </div>
+    <!--end row-->
 
     </div>
     <!--end container-->
 
 
-</div>
+    </div>
 </main>
 {{-- @endsection --}}
 
@@ -266,12 +304,12 @@
     @if( session('status'))
     <div class="alert alert-info">
         {{ session('status')}}
-    </div>
-    @endif
+</div>
+@endif
 
-        <form action="products">
-        @csrf
-        <div class="slidecontainer">
+<form action="products">
+    @csrf
+    <div class="slidecontainer">
 
         <input type="range" min="1" max="100" value="50">
 
@@ -279,30 +317,31 @@
         <select name="price" id="input">
 
             ,<option value="0">Select Price</option>
-            @foreach ($products  as $price)
-                <option value="{{ $price->price }}" {{ $price->price == $price['price'] ? 'selected' : '' }}>
+            @foreach ($products as $price)
+            <option value="{{ $price->price }}" {{ $price->price == $price['price'] ? 'selected' : '' }}>
                 {{ $price['price'] }}
-                </option>
+            </option>
             @endforeach
         </select>
 
-     <input type="submit" class="btn btn-danger btn-sm" value="Filter"> -->
-        </form>
-    @foreach ($products as $product)
-    <li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
-        <div class="product product-style-3 equal-elem ">
-            <div class="product-thumnail">
-                <a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-                    <figure><img src="{{asset($product->product_image)}}" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
-                </a>
+        <input type="submit" class="btn btn-danger btn-sm" value="Filter"> -->
+</form>
+@foreach ($products as $product)
+<li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
+    <div class="product product-style-3 equal-elem ">
+        <div class="product-thumnail">
+            <a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
+                <figure><img src="{{asset($product->product_image)}}"
+                        alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
+            </a>
 
-            </div>
-            <div class="product-info">
-                <a href="#" class="product-name"><span>{{$product->name}}</span></a>
-                <div class="wrap-price"><span class="product-price">{{$product->price}}</span></div>
-                <a href="#" class="btn add-to-cart">Add To Cart</a>
-            </div>
         </div>
-    </li>
-    @endforeach
-    </div> --}}
+        <div class="product-info">
+            <a href="#" class="product-name"><span>{{$product->name}}</span></a>
+            <div class="wrap-price"><span class="product-price">{{$product->price}}</span></div>
+            <a href="#" class="btn add-to-cart">Add To Cart</a>
+        </div>
+    </div>
+</li>
+@endforeach
+</div> --}}
