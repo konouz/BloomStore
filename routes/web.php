@@ -9,6 +9,7 @@ use App\Http\Livewire\CartComponent;
 use App\Http\Livewire\DetailsComponent;
 
 use App\Http\Livewire\checkoutComponent;
+use App\Http\Livewire\WishlistComponent;
 use App\Models\Product;
 
 
@@ -44,6 +45,7 @@ Route::get('/checkout', CheckoutComponent::class )->name('product.checkout');
 Route::get('/shop', ShopComponent::class )->name('product.shop');
 Route::get('/product/{slug}', DetailsComponent::class)->name('product.details');
 // Route::get('/blog/{id}', function ($id) { return view('pages/show-post', compact('id') ); })
+Route::get('/wishlist', WishlistComponent::class )->name('product.wishlist');
 
 
 require __DIR__.'/auth.php';
