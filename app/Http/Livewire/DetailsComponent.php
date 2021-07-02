@@ -20,7 +20,7 @@ class DetailsComponent extends Component
     public function render()
     {
         $product= Product::where('slug',$this->slug)->first();
-        return view('livewire.details-component',['product'=>$product]);
+        return view('livewire.details-component',['product'=>$product])->layout('layouts.base');
     }
         public function store ($product_id,$product_name,$product_price)
     {

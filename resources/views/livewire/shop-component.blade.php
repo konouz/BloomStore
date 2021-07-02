@@ -10,7 +10,7 @@
             <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 main-content-area">
                 <div class="banner-shop">
                     <a href="#" class="banner-link">
-                        <figure><img src="{{ asset('assets/images/shop-banner.jpg') }}" alt=""></figure>
+                        <figure><img style="height:80vh; width:100%" src="{{ asset('https://cdn.shopify.com/s/files/1/0088/7986/5907/products/smartgames-chicken-shuffle-jr-travel-game-games-smart-games-toycra-6_1051x700.jpg?v=1570165400') }}" alt=""></figure>
                     </a>
                 </div>
                 <div class="wrap-shop-control">
@@ -200,7 +200,7 @@
                         </ul>
                     </div>
                 </div><!-- Color -->
-                <div class="widget mercado-widget filter-widget">
+                {{-- <div class="widget mercado-widget filter-widget">
                     <h2 class="widget-title">Size</h2>
                     <div class="widget-content">
                         <ul class="list-style inline-round ">
@@ -210,11 +210,11 @@
                             <li class="list-item"><a class="filter-link " href="#">xl</a></li>
                         </ul>
                         <div class="widget-banner">
-                            <figure><img src="{{ asset('assets/images/size-banner-widget.jpg') }}" width="270"
-                                    height="331" alt=""></figure>
+                            {{-- <figure><img src="{{ asset('assets/images/size-banner-widget.jpg') }}" width="270" --}}
+                                    {{-- height="331" alt=""></figure> --}}
                         </div>
                     </div>
-                </div><!-- Size -->
+                </div><!-- Size --> --}}
                 <div class="widget mercado-widget widget-product">
                     <h2 class="widget-title">Popular Products</h2>
                     <div class="widget-content">
