@@ -45,12 +45,11 @@
                                                 </i>
                                                 Edit
                                             </a>
-                                            <a class="btn btn-danger btn-sm"
-                                               href="{{ route('brands.destroy', $brand) }}">
-                                                <i class="fas fa-trash">
-                                                </i>
-                                                Delete
-                                            </a>
+                                            <form action="{{ route('brands.destroy', $brand) }}" method="POST">
+                                                {{ csrf_field() }}
+                                                {{ method_field('DELETE') }}
+                                                <button class="btn btn-danger btn-sm" >Delete </button>
+                                            </form>
                                     </tr>
                                 @endforeach
                                 </tbody>

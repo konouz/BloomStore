@@ -27,13 +27,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/products/list', [ProductController::class, 'list'])->name('products.list');
-Route::resource('products', ProductController::class);
-Route::get('/categories/list', [CategoryController::class, 'list'])->name('categories.list');
-Route::resource('categories', CategoryController::class);
-Route::get('/brands/list', [BrandController::class, 'list'])->name('brands.list');
-Route::resource('brands', BrandController::class);
+Route::resource('/admin/products', ProductController::class);
+Route::get('/categories/admin/list', [CategoryController::class, 'list'])->name('categories.list');
+Route::resource('/admin/categories', CategoryController::class);
+Route::get('/admin/brands/list', [BrandController::class, 'list'])->name('brands.list');
+Route::resource('/admin/brands', BrandController::class);
 
-Route::get('/dashboard', function () {
+Route::get('/admin/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 

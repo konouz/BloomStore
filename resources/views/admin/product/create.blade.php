@@ -28,7 +28,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="inputName">Price</label>
-                                <input type="text" name="price" class="form-control">
+                                <input type="text" name="regular_price" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputName">Slug</label>
+                                <input type="text" name="slug" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="inputName">Product Image</label>

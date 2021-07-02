@@ -46,12 +46,11 @@
                                                 </i>
                                                 Edit
                                             </a>
-                                            <a class="btn btn-danger btn-sm"
-                                               href="{{ route('categories.destroy', $category) }}">
-                                                <i class="fas fa-trash">
-                                                </i>
-                                                Delete
-                                            </a>
+                                            <form action="{{ route('categories.destroy', $category) }}" method="POST">
+                                                {{ csrf_field() }}
+                                                {{ method_field('DELETE') }}
+                                                <button class="btn btn-danger btn-sm" >Delete </button>
+                                            </form>
                                     </tr>
                                 @endforeach
                                 </tbody>

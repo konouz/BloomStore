@@ -32,9 +32,12 @@
                                 <input type="text" name="regular_price" class="form-control" value="{{ old('regular_price') ?? $product->regular_price}}">
                             </div>
                             <div class="form-group">
+                                <label for="inputName">Slug</label>
+                                <input type="text" name="slug" class="form-control" value="{{ old('slug') ?? $product->slug}}">
+                            </div>
+                            <div class="form-group">
                                 <label for="inputName">Product Image</label>
                                 <input type="text" name="product_image" class="form-control" value="{{ old('product_image') ?? $product->product_image}}">
-
                             </div>
                             <div class="form-group">
                                 <label for="inputName">Description</label>
