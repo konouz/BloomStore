@@ -89,14 +89,15 @@ class ProductController extends Controller
     {
         $request->validate([
             'name'              => 'required|min:4|max:255',
-            'price'             => 'required|integer',
+            'regular_price'             => 'required|integer',
             'product_image'     => 'required|url',
-            'description'       => 'required|min:20|max:255'
+            'description'       => 'required|min:20|max:255',
+            'slug'              => 'required|min:4'
         ]);
 
         $product = Product::create($request->all());
 
-        return redirect()->route('products.index');
+        return redirect()->route('products.list');
         // ->with('success', 'The Tag was created successfully');
     }
 
@@ -165,10 +166,11 @@ class ProductController extends Controller
     {
         $request->validate([
             'name'              => 'required|min:4|max:255',
-            'price'             => 'required|integer',
+            'regular_price'     => 'required|integer',
             'product_image'     => 'required|url',
             'description'       => 'required|min:20|max:255',
-            'category_id'       => 'required|numeric|exists:categories,id'
+            'category_id'       => 'required|numeric|exists:categories,id',
+            'slug'              => 'required|min:4'
 
         ]);
 

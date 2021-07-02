@@ -33,7 +33,7 @@
                                     <tr>
                                         <td>{{ $product->id }}</td>
                                         <td>{{$product->name}}</td>
-                                        <td>{{ $product->price}}</td>
+                                        <td>{{ $product->regular_price}}</td>
                                         <td>{{$product->product_image}}</td>
                                         <td>{{$product->description}}</span></td>
                                         <td class="text-right">
@@ -48,12 +48,11 @@
                                                 </i>
                                                 Edit
                                             </a>
-                                            <a class="btn btn-danger btn-sm"
-                                               href="{{ route('products.destroy', $product) }}">
-                                                <i class="fas fa-trash">
-                                                </i>
-                                                Delete
-                                            </a>
+                                            <form action="{{ route('products.destroy', $product) }}" method="POST">
+                                                {{ csrf_field() }}
+                                                {{ method_field('DELETE') }}
+                                                <button class="btn btn-danger btn-sm" >Delete </button>
+                                            </form>
                                     </tr>
                                 @endforeach
                                 </tbody>
